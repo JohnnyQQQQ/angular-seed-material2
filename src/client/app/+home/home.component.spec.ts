@@ -14,7 +14,6 @@ import {
   HTTP_PROVIDERS
 } from '@angular/http';
 import { MockBackend } from '@angular/http/testing';
-import { getDOM } from '@angular/platform-browser/src/dom/dom_adapter';
 
 import { NameListService } from '../shared/index';
 import { HomeComponent } from './home.component';
@@ -34,18 +33,19 @@ export function main() {
             rootTC.detectChanges();
 
             let homeInstance = rootTC.debugElement.children[0].componentInstance;
-            let homeDOMEl = rootTC.debugElement.children[0].nativeElement;
+            let listItems = rootTC.debugElement.query(By.css('md-list-item'));
 
             expect(homeInstance.nameListService).toEqual(jasmine.any(NameListService));
-            expect(getDOM().querySelectorAll(homeDOMEl, 'li').length).toEqual(0);
+            //expect(listItems[0].nativeElement.className).toEqual(0);
+            expect(listItems.nativeElement.className).toBe('');
 
             homeInstance.newName = 'Minko';
             homeInstance.addName();
             rootTC.detectChanges();
 
-            expect(getDOM().querySelectorAll(homeDOMEl, 'li').length).toEqual(1);
+            expect(listItems[0].nativeElement.className).toEqual(0);
 
-            expect(getDOM().querySelectorAll(homeDOMEl, 'li')[0].textContent).toEqual('Minko');
+            expect(listItems[0].nativeElement.className).toMatch('Minko');
           });
       }));
   });
