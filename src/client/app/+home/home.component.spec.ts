@@ -1,11 +1,10 @@
 import { Component, provide } from '@angular/core';
-import { TestComponentBuilder } from '@angular/compiler/testing';
-import { disableDeprecatedForms, provideForms } from '@angular/forms';
+import { TestComponentBuilder, TestBed } from '@angular/core/testing';
+import { FormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
 import {
-  describe,
-  expect,
-  inject,
-  it
+  async,
+  inject
 } from '@angular/core/testing';
 import {
   BaseRequestOptions,
@@ -14,6 +13,7 @@ import {
   HTTP_PROVIDERS
 } from '@angular/http';
 import { MockBackend } from '@angular/http/testing';
+import { getDOM } from '@angular/platform-browser/src/dom/dom_adapter';
 
 import { NameListService } from '../shared/index';
 import { HomeComponent } from './home.component';
@@ -23,31 +23,32 @@ export function main() {
     // Disable old forms
     let providerArr: any[];
 
-    beforeEach(() => { providerArr = [disableDeprecatedForms(), provideForms()]; });
+    beforeEach(() => {
+      TestBed.configureTestingModule({ imports: [FormsModule, RouterModule] });
+    });
 
     it('should work',
-      inject([TestComponentBuilder], (tcb: TestComponentBuilder) => {
+      async(inject([TestComponentBuilder], (tcb: TestComponentBuilder) => {
         tcb.overrideProviders(TestComponent, providerArr)
           .createAsync(TestComponent)
           .then((rootTC: any) => {
+
             rootTC.detectChanges();
 
             let homeInstance = rootTC.debugElement.children[0].componentInstance;
-            let listItems = rootTC.debugElement.query(By.css('md-list-item'));
+            let homeDOMEl = rootTC.debugElement.children[0].nativeElement;
 
             expect(homeInstance.nameListService).toEqual(jasmine.any(NameListService));
-            //expect(listItems[0].nativeElement.className).toEqual(0);
-            expect(listItems.nativeElement.className).toBe('');
+            expect(getDOM().querySelectorAll(homeDOMEl, 'md-list-item').length).toEqual(0);
 
             homeInstance.newName = 'Minko';
             homeInstance.addName();
             rootTC.detectChanges();
 
-            expect(listItems[0].nativeElement.className).toEqual(0);
-
-            expect(listItems[0].nativeElement.className).toMatch('Minko');
+            expect(getDOM().querySelectorAll(homeDOMEl, 'md-list-item').length).toEqual(1);
+            expect(getDOM().querySelectorAll(homeDOMEl, 'md-list-item')[0].textContent.trim()).toEqual('Minko');
           });
-      }));
+      })));
   });
 }
 
@@ -58,7 +59,7 @@ export function main() {
     BaseRequestOptions,
     MockBackend,
     provide(Http, {
-      useFactory: function(backend: ConnectionBackend, defaultOptions: BaseRequestOptions) {
+      useFactory: function (backend: ConnectionBackend, defaultOptions: BaseRequestOptions) {
         return new Http(backend, defaultOptions);
       },
       deps: [MockBackend, BaseRequestOptions]
@@ -68,4 +69,4 @@ export function main() {
   template: '<sd-home></sd-home>',
   directives: [HomeComponent]
 })
-class TestComponent {}
+class TestComponent { }

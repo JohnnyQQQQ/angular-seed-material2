@@ -9,12 +9,12 @@
     <form (submit)="addName()" class="home-form">
       <div>
         <input [(ngModel)]="newName" name="newName" [placeholder]="'Awesome Computer Scientist'" class="home-input">
-        <!--<md-input [(ngModel)]="newName" name="newName" class="home-input"></md-input>-->
+        <!--<md-input [(ngModel)]="newName" name="newName" class="home-input" placeholder="Awesome Computer Scientist" ></md-input>-->
         <button md-raised-button color="accent" type="submit" class="home-button">ADD</button>
       </div>
     </form>
     <md-list class="home-list">
-      <md-list-item *ngFor="let name of nameListService.get() | async">
+      <md-list-item *ngFor="let name of names">
         <h3 md-line>{{name}}</h3>
         <p md-line class="demo-secondary-text"></p>
       </md-list-item>
