@@ -8,8 +8,7 @@
   <md-card class="home-card">
     <form (submit)="addName()" class="home-form">
       <div>
-        <input [(ngModel)]="newName" name="newName" [placeholder]="'Awesome Computer Scientist'" class="home-input">
-        <!--<md-input [(ngModel)]="newName" name="newName" class="home-input" placeholder="Awesome Computer Scientist" ></md-input>-->
+        <md-input [(ngModel)]="newName"  name="newName" class="home-input" placeholder="Awesome Computer Scientist" ngDefaultControl></md-input>
         <button md-raised-button color="accent" type="submit" class="home-button">ADD</button>
       </div>
     </form>
