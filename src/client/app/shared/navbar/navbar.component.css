@@ -13,3 +13,7 @@ nav {
   margin-top: 2px;
   margin-right: 20px;
 }
+
+nav a {
+  text-decoration: none;
+}
