@@ -8,8 +8,12 @@
 }
 
 nav {
-  color: #8f8f8f;
+  color: #8f8f8f !important;
   line-height: 48px;
   margin-top: 2px;
   margin-right: 20px;
+}
+
+nav a {
+  text-decoration: none;
 }
