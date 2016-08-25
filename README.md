@@ -1,5 +1,5 @@
 # Angular2-Seed Materialized [![Build Status](https://travis-ci.org/DeviantJS/angular2-seed-material2.svg?branch=master)](https://travis-ci.org/DeviantJS/angular2-seed-material2)
-> Current Material2 Version - material2-2.0.0-alpha.7-3
+> Current Material2 Version - material2-2.0.0-alpha.7-4
 
 ## Deviations from the based seed project
 - Angular2-Material
@@ -129,6 +129,12 @@ npm test
 # Development. Your app will be watched by karma
 # on each change all your specs will be executed.
 npm run test.watch
+# NB: The command above might fail with a "EMFILE: too many open files" error.
+# Some OS have a small limit of opened file descriptors (256) by default
+# and will result in the EMFILE error.
+# You can raise the maximum of file descriptors by running the command below:
+ulimit -n 10480
+
 
 # code coverage (istanbul)
 # auto-generated at the end of `npm test`
