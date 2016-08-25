@@ -45,8 +45,8 @@ export function main() {
             homeInstance.addName();
             rootTC.detectChanges();
 
-            expect(getDOM().querySelectorAll(homeDOMEl, 'md-list-item').length).toEqual(1);
-            expect(getDOM().querySelectorAll(homeDOMEl, 'md-list-item')[0].textContent.trim()).toEqual('Minko');
+            expect(getDOM().querySelectorAll(homeDOMEl, 'md-list-item > h3').length).toEqual(1);
+            expect(getDOM().querySelectorAll(homeDOMEl, 'md-list-item > h3')[0].textContent.trim()).toEqual('Minko');
           });
       })));
   });
