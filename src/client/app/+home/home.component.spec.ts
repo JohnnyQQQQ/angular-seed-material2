@@ -1,10 +1,9 @@
 import { Component, provide } from '@angular/core';
-import { TestComponentBuilder, TestBed } from '@angular/core/testing';
+import { TestBed } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import {
-  async,
-  inject
+  async
 } from '@angular/core/testing';
 import {
   BaseRequestOptions,
@@ -20,51 +19,56 @@ import { HomeComponent } from './home.component';
 
 export function main() {
   describe('Home component', () => {
+    // setting module for testing
     // Disable old forms
-    let providerArr: any[];
-
     beforeEach(() => {
-      TestBed.configureTestingModule({ imports: [FormsModule, RouterModule] });
+      TestBed.configureTestingModule({
+        imports: [FormsModule, RouterModule],
+        declarations: [TestComponent],
+        providers: [
+          HTTP_PROVIDERS,
+          NameListService,
+          BaseRequestOptions,
+          MockBackend,
+          provide(Http, {
+            useFactory: function (backend: ConnectionBackend, defaultOptions: BaseRequestOptions) {
+              return new Http(backend, defaultOptions);
+            },
+            deps: [MockBackend, BaseRequestOptions]
+          }),
+        ]
+      });
     });
 
     it('should work',
-      async(inject([TestComponentBuilder], (tcb: TestComponentBuilder) => {
-        tcb.overrideProviders(TestComponent, providerArr)
-          .createAsync(TestComponent)
-          .then((rootTC: any) => {
+      async(() => {
 
-            rootTC.detectChanges();
+        TestBed
+          .compileComponents()
+          .then(() => {
+            let fixture = TestBed.createComponent(TestComponent);
+            fixture.detectChanges();
 
-            let homeInstance = rootTC.debugElement.children[0].componentInstance;
-            let homeDOMEl = rootTC.debugElement.children[0].nativeElement;
+            let homeInstance = fixture.debugElement.children[0].componentInstance;
+            let homeDOMEl = fixture.debugElement.children[0].nativeElement;
 
             expect(homeInstance.nameListService).toEqual(jasmine.any(NameListService));
             expect(getDOM().querySelectorAll(homeDOMEl, 'md-list-item').length).toEqual(0);
 
             homeInstance.newName = 'Minko';
             homeInstance.addName();
-            rootTC.detectChanges();
+
+            fixture.detectChanges();
 
             expect(getDOM().querySelectorAll(homeDOMEl, 'md-list-item > h3').length).toEqual(1);
-            expect(getDOM().querySelectorAll(homeDOMEl, 'md-list-item > h3')[0].textContent.trim()).toEqual('Minko');
+            expect(getDOM().querySelectorAll(homeDOMEl, 'md-list-item > h3')[0].textContent).toEqual('Minko');
           });
-      })));
+
+      }));
   });
 }
 
 @Component({
-  providers: [
-    HTTP_PROVIDERS,
-    NameListService,
-    BaseRequestOptions,
-    MockBackend,
-    provide(Http, {
-      useFactory: function (backend: ConnectionBackend, defaultOptions: BaseRequestOptions) {
-        return new Http(backend, defaultOptions);
-      },
-      deps: [MockBackend, BaseRequestOptions]
-    }),
-  ],
   selector: 'test-cmp',
   template: '<sd-home></sd-home>',
   directives: [HomeComponent]
