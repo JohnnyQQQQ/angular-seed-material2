@@ -414,75 +414,93 @@ export class SeedConfig {
         defaultExtension: 'js'
       },
       '@angular2-material/card': {
-        main: 'card.js',
+        format: 'cjs',
+        main: 'card.umd.js',
         defaultExtension: 'js'
       },
       '@angular2-material/button': {
-        main: 'button.js',
+        format: 'cjs',
+        main: 'button.umd.js',
         defaultExtension: 'js'
       },
       '@angular2-material/checkbox': {
-        main: 'checkbox.js',
+        format: 'cjs',
+        main: 'checkbox.umd.js',
         defaultExtension: 'js'
       },
       '@angular2-material/grid-list': {
-        main: 'grid-list.js',
+        format: 'cjs',
+        main: 'grid-list.umd.js',
         defaultExtension: 'js'
       },
       '@angular2-material/icon': {
-        main: 'icon.js',
+        format: 'cjs',
+        main: 'icon.umd.js',
         defaultExtension: 'js'
       },
       '@angular2-material/input': {
-        main: 'input.js',
+        format: 'cjs',
+        main: 'input.umd.js',
         defaultExtension: 'js'
       },
       '@angular2-material/list': {
-        main: 'list.js',
+        format: 'cjs',
+        main: 'list.umd.js',
         defaultExtension: 'js'
       },
       '@angular2-material/menu': {
-        main: 'menu.js',
+        format: 'cjs',
+        main: 'menu.umd.js',
         defaultExtension: 'js'
       },
       '@angular2-material/progress-bar': {
-        main: 'progress-bar.js',
+        format: 'cjs',
+        main: 'progresss-bar.umd.js',
         defaultExtension: 'js'
       },
       '@angular2-material/progress-circle': {
-        main: 'progress-circle.js',
+        format: 'cjs',
+        main: 'progress-circle.umd.js',
         defaultExtension: 'js'
       },
       '@angular2-material/radio': {
-        main: 'radio.js',
+        format: 'cjs',
+        main: 'radio.umd.js',
         defaultExtension: 'js'
       },
       '@angular2-material/sidenav': {
-        main: 'sidenav.js',
+        format: 'cjs',
+        main: 'sidenav.umd.js',
         defaultExtension: 'js'
       },
       '@angular2-material/slider': {
-        main: 'slider.js',
+        format: 'cjs',
+        main: 'slider.umd.js',
         defaultExtension: 'js'
       },
       '@angular2-material/slide-toggle': {
-        main: 'slide-toggle.js',
+        format: 'cjs',
+        main: 'slide-toggle.umd.js',
         defaultExtension: 'js'
       },
       '@angular2-material/button-toggle': {
-        main: 'button-toggle.js',
+        format: 'cjs',
+        main: 'button-toggle.umd.js',
         defaultExtension: 'js'
       },
       '@angular2-material/tabs': {
-        main: 'tabs.js',
+        format: 'cjs',
+        main: 'tabs.umd.js',
         defaultExtension: 'js'
       },
       '@angular2-material/toolbar': {
-        main: 'toolbar.js',
+        format: 'cjs',
+        main: 'toolbar.umd.js',
         defaultExtension: 'js'
       },
       '@angular2-material/tooltip': {
-        main: 'tooltip.js',
+        format: 'cjs',
+        main: 'tooltip.umd.js',
         defaultExtension: 'js'
       },
       'rxjs': {
