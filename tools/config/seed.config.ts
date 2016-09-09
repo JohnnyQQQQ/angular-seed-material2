@@ -133,6 +133,11 @@ export class SeedConfig {
    */
   BOOTSTRAP_MODULE = `${this.BOOTSTRAP_DIR}/` + (this.ENABLE_HOT_LOADING ? 'hot_loader_main' : 'main');
 
+  BOOTSTRAP_PROD_MODULE = `${this.BOOTSTRAP_DIR}/` + 'main';
+
+  NG_FACTORY_FILE = 'main-prod';
+
+  BOOTSTRAP_FACTORY_PROD_MODULE = `${this.BOOTSTRAP_DIR}/${this.NG_FACTORY_FILE}`;
   /**
    * The default title of the application as used in the `<title>` tag of the
    * `index.html`.
@@ -272,7 +277,7 @@ export class SeedConfig {
     { src: 'zone.js/dist/zone.js', inject: 'libs' },
     { src: 'core-js/client/shim.min.js', inject: 'shims' },
     { src: 'systemjs/dist/system.src.js', inject: 'shims', env: ENVIRONMENTS.DEVELOPMENT },
-    { src: 'rxjs/bundles/Rx.js', inject: 'libs', env: ENVIRONMENTS.DEVELOPMENT }
+    { src: 'rxjs/bundles/Rx.umd.min.js', inject: 'libs', env: ENVIRONMENTS.DEVELOPMENT },
   ];
 
   /**
@@ -315,17 +320,30 @@ export class SeedConfig {
     ],
     paths: {
       [this.BOOTSTRAP_MODULE]: `${this.APP_BASE}${this.BOOTSTRAP_MODULE}`,
-      '@angular/common': `node_modules/@angular/common/bundles/common.umd.js`,
-      '@angular/compiler': `node_modules/@angular/compiler/bundles/compiler.umd.js`,
-      '@angular/core': `node_modules/@angular/core/bundles/core.umd.js`,
-      '@angular/forms': `node_modules/@angular/forms/bundles/forms.umd.js`,
-      '@angular/http': `node_modules/@angular/http/bundles/http.umd.js`,
-      '@angular/platform-browser': `node_modules/@angular/platform-browser/bundles/platform-browser.umd.js`,
-      '@angular/platform-browser-dynamic': `node_modules/@angular/platform-browser-dynamic/bundles/platform-browser-dynamic.umd.js`,
-      '@angular/router': `node_modules/@angular/router/index.js`,
-      'rxjs/*': `node_modules/rxjs/*`,
-      'app/*': `/app/*`,
-      '*': `node_modules/*`
+      '@angular/common': 'node_modules/@angular/common/bundles/common.umd.js',
+      '@angular/compiler': 'node_modules/@angular/compiler/bundles/compiler.umd.js',
+      '@angular/core': 'node_modules/@angular/core/bundles/core.umd.js',
+      '@angular/forms': 'node_modules/@angular/forms/bundles/forms.umd.js',
+      '@angular/http': 'node_modules/@angular/http/bundles/http.umd.js',
+      '@angular/platform-browser': 'node_modules/@angular/platform-browser/bundles/platform-browser.umd.js',
+      '@angular/platform-browser-dynamic': 'node_modules/@angular/platform-browser-dynamic/bundles/platform-browser-dynamic.umd.js',
+      '@angular/router': 'node_modules/@angular/router/bundles/router.umd.js',
+
+      '@angular/common/testing': 'node_modules/@angular/common/bundles/common-testing.umd.js',
+      '@angular/compiler/testing': 'node_modules/@angular/compiler/bundles/compiler-testing.umd.js',
+      '@angular/core/testing': 'node_modules/@angular/core/bundles/core-testing.umd.js',
+      '@angular/http/testing': 'node_modules/@angular/http/bundles/http-testing.umd.js',
+      '@angular/platform-browser/testing':
+        'node_modules/@angular/platform-browser/bundles/platform-browser-testing.umd.js',
+      '@angular/platform-browser-dynamic/testing':
+        'node_modules/@angular/platform-browser-dynamic/bundles/platform-browser-dynamic-testing.umd.js',
+      '@angular/router/testing': 'node_modules/@angular/router/bundles/router-testing.umd.js',
+
+      'rxjs/*': 'node_modules/rxjs/*',
+      'app/*': '/app/*',
+      // For test config
+      'dist/dev/*': '/base/dist/dev/*',
+      '*': 'node_modules/*'
     },
     packages: {
       rxjs: { defaultExtension: 'js' }
@@ -347,127 +365,7 @@ export class SeedConfig {
    * The system builder configuration of the application.
    * @type {any}
    */
-  SYSTEM_BUILDER_CONFIG: any = {
-    defaultJSExtensions: true,
-    packageConfigPaths: [
-      join(this.PROJECT_ROOT, 'node_modules', '*', 'package.json'),
-      join(this.PROJECT_ROOT, 'node_modules', '@angular', '*', 'package.json'),
-      join(this.PROJECT_ROOT, 'node_modules', '@angular2-material', '*', 'package.json')
-    ],
-    paths: {
-      [`${this.TMP_DIR}/*`]: `${this.TMP_DIR}/*`,
-      '*': 'node_modules/*'
-    },
-    packages: {
-      '@angular/common': {
-        main: 'index.js',
-        defaultExtension: 'js'
-      },
-      '@angular/compiler': {
-        main: 'index.js',
-        defaultExtension: 'js'
-      },
-      '@angular/core': {
-        main: 'index.js',
-        defaultExtension: 'js'
-      },
-      '@angular/forms': {
-        main: 'index.js',
-        defaultExtension: 'js'
-      },
-      '@angular/http': {
-        main: 'index.js',
-        defaultExtension: 'js'
-      },
-      '@angular/platform-browser': {
-        main: 'index.js',
-        defaultExtension: 'js'
-      },
-      '@angular/platform-browser-dynamic': {
-        main: 'index.js',
-        defaultExtension: 'js'
-      },
-      '@angular/router': {
-        main: 'index.js',
-        defaultExtension: 'js'
-      },
-      '@angular2-material/card': {
-        main: 'card.js',
-        defaultExtension: 'js'
-      },
-      '@angular2-material/button': {
-        main: 'button.js',
-        defaultExtension: 'js'
-      },
-      '@angular2-material/checkbox': {
-        main: 'checkbox.js',
-        defaultExtension: 'js'
-      },
-      '@angular2-material/grid-list': {
-        main: 'grid-list.js',
-        defaultExtension: 'js'
-      },
-      '@angular2-material/icon': {
-        main: 'icon.js',
-        defaultExtension: 'js'
-      },
-      '@angular2-material/input': {
-        main: 'input.js',
-        defaultExtension: 'js'
-      },
-      '@angular2-material/list': {
-        main: 'list.js',
-        defaultExtension: 'js'
-      },
-      '@angular2-material/menu': {
-        main: 'menu.js',
-        defaultExtension: 'js'
-      },
-      '@angular2-material/progress-bar': {
-        main: 'progress-bar.js',
-        defaultExtension: 'js'
-      },
-      '@angular2-material/progress-circle': {
-        main: 'progress-circle.js',
-        defaultExtension: 'js'
-      },
-      '@angular2-material/radio': {
-        main: 'radio.js',
-        defaultExtension: 'js'
-      },
-      '@angular2-material/sidenav': {
-        main: 'sidenav.js',
-        defaultExtension: 'js'
-      },
-      '@angular2-material/slider': {
-        main: 'slider.js',
-        defaultExtension: 'js'
-      },
-      '@angular2-material/slide-toggle': {
-        main: 'slide-toggle.js',
-        defaultExtension: 'js'
-      },
-      '@angular2-material/button-toggle': {
-        main: 'button-toggle.js',
-        defaultExtension: 'js'
-      },
-      '@angular2-material/tabs': {
-        main: 'tabs.js',
-        defaultExtension: 'js'
-      },
-      '@angular2-material/toolbar': {
-        main: 'toolbar.js',
-        defaultExtension: 'js'
-      },
-      '@angular2-material/tooltip': {
-        main: 'tooltip.js',
-        defaultExtension: 'js'
-      },
-      'rxjs': {
-        defaultExtension: 'js'
-      }
-    }
-  };
+  SYSTEM_BUILDER_CONFIG: any = this.composeSystemBuildConfig();
 
   /**
    * The Autoprefixer configuration for the application.
@@ -545,6 +443,100 @@ export class SeedConfig {
       }
     }
   };
+
+  /**
+   * Compose the SYSTEM_BUILDER_CONFIG object
+   */
+  composeSystemBuildConfig(): any {
+
+    const SYSTEM_BUILDER_CONFIG: any = {
+      defaultJSExtensions: true,
+      packageConfigPaths: [
+        join(this.PROJECT_ROOT, 'node_modules', '*', 'package.json'),
+        join(this.PROJECT_ROOT, 'node_modules', '@angular', '*', 'package.json'),
+        join(this.PROJECT_ROOT, 'node_modules', '@angular2-material', '*', 'package.json')
+      ],
+      paths: {
+        [`${this.TMP_DIR}/*`]: `${this.TMP_DIR}/*`,
+        '*': 'node_modules/*'
+      },
+      packages: {
+        '@angular/common': {
+          main: 'index.js',
+          defaultExtension: 'js'
+        },
+        '@angular/compiler': {
+          main: 'index.js',
+          defaultExtension: 'js'
+        },
+        '@angular/core/testing': {
+          main: 'index.js',
+          defaultExtension: 'js'
+        },
+        '@angular/core': {
+          main: 'index.js',
+          defaultExtension: 'js'
+        },
+        '@angular/forms': {
+          main: 'index.js',
+          defaultExtension: 'js'
+        },
+        '@angular/http': {
+          main: 'index.js',
+          defaultExtension: 'js'
+        },
+        '@angular/platform-browser': {
+          main: 'index.js',
+          defaultExtension: 'js'
+        },
+        '@angular/platform-browser-dynamic': {
+          main: 'index.js',
+          defaultExtension: 'js'
+        },
+        '@angular/router': {
+          main: 'index.js',
+          defaultExtension: 'js'
+        },
+        'rxjs': {
+          defaultExtension: 'js'
+        },
+        '.': {
+          defaultExtension: 'js'
+        }
+      }
+    };
+
+    const components = [
+      'button',
+      'card',
+      'checkbox',
+      'dialog',
+      'grid-list',
+      'icon',
+      'input',
+      'list',
+      'menu',
+      'progress-bar',
+      'progress-circle',
+      'radio',
+      'sidenav',
+      'slider',
+      'slide-toggle',
+      'button-toggle',
+      'tabs',
+      'toolbar',
+      'tooltip'
+    ];
+
+    components.forEach(name => {
+      SYSTEM_BUILDER_CONFIG.packages[`@angular2-material/${name}`] = {
+        format: 'cjs',
+        main: `${name}.umd.js`
+      };
+    });
+
+    return SYSTEM_BUILDER_CONFIG;
+  }
 
   /**
    * Recursively merge source onto target.
