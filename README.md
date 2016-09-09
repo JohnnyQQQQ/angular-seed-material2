@@ -25,6 +25,7 @@ Provides fast, reliable and extensible starter for the development of Angular 2 
 - Supports multiple Angular applications with shared codebase in a single instance of the seed.
 - Ready to go, statically typed build system using gulp for working with TypeScript.
 - Production and development builds.
+- **Ahead-of-Time** compilation support.
 - Sample unit tests with Jasmine and Karma including code coverage via [istanbul](https://gotwarlost.github.io/istanbul/).
 - End-to-end tests with Protractor.
 - Development server with Livereload.
@@ -55,6 +56,8 @@ npm start
 npm run build.dev
 # prod build
 npm run build.prod
+# prod build with AoT compilation
+npm run build.prod.exp
 
 # dev build of multiple applications (by default the value of --app is "app")
 npm start -- --app baz
@@ -144,6 +147,7 @@ npm run serve.coverage
 # e2e (aka. end-to-end, integration) - In three different shell windows
 # Make sure you don't have a global instance of Protractor
 
+# npm install webdriver-manager <- Install this first for e2e testing
 # npm run webdriver-update <- You will need to run this the first time
 npm run webdriver-start
 npm run serve.e2e
@@ -213,6 +217,7 @@ Forks of this project demonstrate how to extend and integrate with other librari
  - https://github.com/AngularShowcase/angular2-seed-example-mashup - Angular 2 application demonstrating the use of [Redux](http://redux.js.org/), [D3](https://github.com/mbostock/d3), [socket io](https://github.com/socketio), [Google Charts](https://developers.google.com/chart/), and [RxJs](https://github.com/Reactive-Extensions/RxJS).
  - https://github.com/tiagomapmarques/angular2-seed-phaser/tree/releases - integration with [Phaser](http://phaser.io/).
  - https://github.com/vyakymenko/angular2-seed-express - integration with [Express](https://expressjs.com/) full-stack development.
+ - https://github.com/UIUXEngineering/angular2-jspm-typescript-seed - integration with [JSPM](http://jspm.io/).
 
 # Directory Structure
 
