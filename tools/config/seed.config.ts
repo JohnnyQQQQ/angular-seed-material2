@@ -365,149 +365,102 @@ export class SeedConfig {
    * The system builder configuration of the application.
    * @type {any}
    */
-  SYSTEM_BUILDER_CONFIG: any = {
-    defaultJSExtensions: true,
-    packageConfigPaths: [
-      join(this.PROJECT_ROOT, 'node_modules', '*', 'package.json'),
-      join(this.PROJECT_ROOT, 'node_modules', '@angular', '*', 'package.json'),
-      join(this.PROJECT_ROOT, 'node_modules', '@angular2-material', '*', 'package.json')
-    ],
-    paths: {
-      [`${this.TMP_DIR}/*`]: `${this.TMP_DIR}/*`,
-      '*': 'node_modules/*'
-    },
-    packages: {
-      '@angular/common': {
-        main: 'index.js',
-        defaultExtension: 'js'
+  SYSTEM_BUILDER_CONFIG: any = this.composeSystemBuildConfig();
+
+  /**
+   * Compose the SYSTEM_BUILDER_CONFIG object
+   */
+  private composeSystemBuildConfig(): any {
+
+    const SYSTEM_BUILDER_CONFIG: any = {
+      defaultJSExtensions: true,
+      packageConfigPaths: [
+        join(this.PROJECT_ROOT, 'node_modules', '*', 'package.json'),
+        join(this.PROJECT_ROOT, 'node_modules', '@angular', '*', 'package.json'),
+        join(this.PROJECT_ROOT, 'node_modules', '@angular2-material', '*', 'package.json')
+      ],
+      paths: {
+        [`${this.TMP_DIR}/*`]: `${this.TMP_DIR}/*`,
+        '*': 'node_modules/*'
       },
-      '@angular/compiler': {
-        main: 'index.js',
-        defaultExtension: 'js'
-      },
-      '@angular/core/testing': {
-        main: 'index.js',
-        defaultExtension: 'js'
-      },
-      '@angular/core': {
-        main: 'index.js',
-        defaultExtension: 'js'
-      },
-      '@angular/forms': {
-        main: 'index.js',
-        defaultExtension: 'js'
-      },
-      '@angular/http': {
-        main: 'index.js',
-        defaultExtension: 'js'
-      },
-      '@angular/platform-browser': {
-        main: 'index.js',
-        defaultExtension: 'js'
-      },
-      '@angular/platform-browser-dynamic': {
-        main: 'index.js',
-        defaultExtension: 'js'
-      },
-      '@angular/router': {
-        main: 'index.js',
-        defaultExtension: 'js'
-      },
-      '@angular2-material/card': {
-        format: 'cjs',
-        main: 'card.umd.js',
-        defaultExtension: 'js'
-      },
-      '@angular2-material/button': {
-        format: 'cjs',
-        main: 'button.umd.js',
-        defaultExtension: 'js'
-      },
-      '@angular2-material/checkbox': {
-        format: 'cjs',
-        main: 'checkbox.umd.js',
-        defaultExtension: 'js'
-      },
-      '@angular2-material/grid-list': {
-        format: 'cjs',
-        main: 'grid-list.umd.js',
-        defaultExtension: 'js'
-      },
-      '@angular2-material/icon': {
-        format: 'cjs',
-        main: 'icon.umd.js',
-        defaultExtension: 'js'
-      },
-      '@angular2-material/input': {
-        format: 'cjs',
-        main: 'input.umd.js',
-        defaultExtension: 'js'
-      },
-      '@angular2-material/list': {
-        format: 'cjs',
-        main: 'list.umd.js',
-        defaultExtension: 'js'
-      },
-      '@angular2-material/menu': {
-        format: 'cjs',
-        main: 'menu.umd.js',
-        defaultExtension: 'js'
-      },
-      '@angular2-material/progress-bar': {
-        format: 'cjs',
-        main: 'progresss-bar.umd.js',
-        defaultExtension: 'js'
-      },
-      '@angular2-material/progress-circle': {
-        format: 'cjs',
-        main: 'progress-circle.umd.js',
-        defaultExtension: 'js'
-      },
-      '@angular2-material/radio': {
-        format: 'cjs',
-        main: 'radio.umd.js',
-        defaultExtension: 'js'
-      },
-      '@angular2-material/sidenav': {
-        format: 'cjs',
-        main: 'sidenav.umd.js',
-        defaultExtension: 'js'
-      },
-      '@angular2-material/slider': {
-        format: 'cjs',
-        main: 'slider.umd.js',
-        defaultExtension: 'js'
-      },
-      '@angular2-material/slide-toggle': {
-        format: 'cjs',
-        main: 'slide-toggle.umd.js',
-        defaultExtension: 'js'
-      },
-      '@angular2-material/button-toggle': {
-        format: 'cjs',
-        main: 'button-toggle.umd.js',
-        defaultExtension: 'js'
-      },
-      '@angular2-material/tabs': {
-        format: 'cjs',
-        main: 'tabs.umd.js',
-        defaultExtension: 'js'
-      },
-      '@angular2-material/toolbar': {
-        format: 'cjs',
-        main: 'toolbar.umd.js',
-        defaultExtension: 'js'
-      },
-      '@angular2-material/tooltip': {
-        format: 'cjs',
-        main: 'tooltip.umd.js',
-        defaultExtension: 'js'
-      },
-      'rxjs': {
-        defaultExtension: 'js'
+      packages: {
+        '@angular/common': {
+          main: 'index.js',
+          defaultExtension: 'js'
+        },
+        '@angular/compiler': {
+          main: 'index.js',
+          defaultExtension: 'js'
+        },
+        '@angular/core/testing': {
+          main: 'index.js',
+          defaultExtension: 'js'
+        },
+        '@angular/core': {
+          main: 'index.js',
+          defaultExtension: 'js'
+        },
+        '@angular/forms': {
+          main: 'index.js',
+          defaultExtension: 'js'
+        },
+        '@angular/http': {
+          main: 'index.js',
+          defaultExtension: 'js'
+        },
+        '@angular/platform-browser': {
+          main: 'index.js',
+          defaultExtension: 'js'
+        },
+        '@angular/platform-browser-dynamic': {
+          main: 'index.js',
+          defaultExtension: 'js'
+        },
+        '@angular/router': {
+          main: 'index.js',
+          defaultExtension: 'js'
+        },
+        'rxjs': {
+          defaultExtension: 'js'
+        },
+        '.': {
+          defaultExtension: 'js'
+        }
       }
-    }
-  };
+    };
+
+    const components = [
+      'all',
+      'button',
+      'card',
+      'checkbox',
+      'dialog',
+      'grid-list',
+      'icon',
+      'input',
+      'list',
+      'menu',
+      'progress-bar',
+      'progress-circle',
+      'radio',
+      'sidenav',
+      'slider',
+      'slide-toggle',
+      'button-toggle',
+      'tabs',
+      'toolbar',
+      'tooltip'
+    ];
+
+    components.forEach(name => {
+      SYSTEM_BUILDER_CONFIG.packages[`@angular2-material/${name}`] = {
+        format: 'cjs',
+        main: `${name}.umd.js`
+      };
+    });
+
+    return SYSTEM_BUILDER_CONFIG;
+  }
 
   /**
    * The Autoprefixer configuration for the application.
