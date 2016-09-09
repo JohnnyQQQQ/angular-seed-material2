@@ -14,6 +14,8 @@ import { MockBackend } from '@angular/http/testing';
 
 import { NameListService } from '../shared/index';
 import { HomeModule } from './home.module';
+import { MaterialModule } from '../shared/material.module';
+
 
 export function main() {
   describe('Home component', () => {
@@ -21,7 +23,7 @@ export function main() {
     // Disable old forms
     beforeEach(() => {
       TestBed.configureTestingModule({
-        imports: [FormsModule, RouterModule, HttpModule, HomeModule],
+        imports: [FormsModule, RouterModule, HttpModule, HomeModule, MaterialModule.forRoot()],
         declarations: [TestComponent],
         providers: [
           NameListService,
@@ -55,8 +57,8 @@ export function main() {
 
             fixture.detectChanges();
 
-            expect(homeDOMEl.querySelectorAll('md-list-item > h3').length).toEqual(1);
-            expect(homeDOMEl.querySelectorAll('md-list-item > h3')[0].textContent).toEqual('Minko');
+            expect(homeDOMEl.querySelectorAll('md-list-item').length).toEqual(1);
+            expect(homeDOMEl.querySelectorAll('md-list-item h3')[0].textContent).toEqual('Minko');
           });
 
       }));

@@ -17,6 +17,7 @@ import { HomeComponent } from './home/home.component';
 import { AboutComponent } from './about/about.component';
 import { ToolbarComponent } from './shared/toolbar/toolbar.component';
 import { NavbarComponent } from './shared/navbar/navbar.component';
+import { MaterialModule } from './shared/material.module';
 
 export function main() {
 
@@ -28,7 +29,7 @@ export function main() {
     ];
     beforeEach(() => {
       TestBed.configureTestingModule({
-        imports: [FormsModule, RouterTestingModule.withRoutes(config)],
+        imports: [FormsModule, RouterTestingModule.withRoutes(config), MaterialModule.forRoot()],
         declarations: [TestComponent, ToolbarComponent,
           NavbarComponent, AppComponent,
           HomeComponent, AboutComponent],
