@@ -507,7 +507,6 @@ export class SeedConfig {
     };
 
     const components = [
-      'all',
       'button',
       'card',
       'checkbox',
