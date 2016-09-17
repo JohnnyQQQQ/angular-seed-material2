@@ -1,5 +1,5 @@
 # Angular2-Seed Materialized [![Build Status](https://travis-ci.org/DeviantJS/angular2-seed-material2.svg?branch=master)](https://travis-ci.org/DeviantJS/angular2-seed-material2)
-> Current Material2 Version - material2-2.0.0-alpha.8-1
+> Current Material2 Version - material2-2.0.0-alpha.8-2
 
 ## Deviations from the based seed project
 - Angular2-Material
@@ -67,7 +67,7 @@ npm start -- --app bar
 
 _Does not rely on any global dependencies._
 
-# Table of Content
+# Table of Contents
 
 - [Introduction](#introduction)
 - [How to start](#how-to-start)
