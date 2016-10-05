@@ -1,12 +1,9 @@
 import { NgModule } from '@angular/core';
-import { MdToolbarModule } from '@angular2-material/toolbar';
-import { MdButtonModule } from '@angular2-material/button';
-
-import { MdIconModule } from '@angular2-material/icon';
+import { MaterialModule } from '@angular/material';
 import { ToolbarComponent } from './toolbar.component';
 
 @NgModule({
-    imports: [MdToolbarModule, MdIconModule ,MdButtonModule],
+    imports: [MaterialModule],
     declarations: [ToolbarComponent],
     exports: [ToolbarComponent],
 })
