@@ -11,10 +11,10 @@ import {
   Http, HttpModule
 } from '@angular/http';
 import { MockBackend } from '@angular/http/testing';
+import { MaterialModule } from '@angular/material';
 
 import { NameListService } from '../shared/index';
 import { HomeModule } from './home.module';
-import { MaterialModule } from '../shared/material.module';
 
 
 export function main() {
