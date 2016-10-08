@@ -4,6 +4,22 @@ import { argv } from 'yargs';
 
 import { Environments, InjectableDependency } from './seed.config.interfaces';
 
+/************************* DO NOT CHANGE ************************
+ *
+ * DO NOT make any changes in this file because it will
+ * make your migration to newer versions of the seed harder.
+ *
+ * Your application-specific configurations should be
+ * in project.config.ts. If you need to change any tasks
+ * from "./tasks" overwrite them by creating a task with the
+ * same name in "./projects". For further information take a
+ * look at the documentation:
+ *
+ * 1) https://github.com/mgechev/angular2-seed/tree/master/tools
+ * 2) https://github.com/mgechev/angular2-seed/wiki
+ *
+ *****************************************************************/
+
 /**
  * The enumeration of available environments.
  * @type {Environments}
@@ -275,11 +291,6 @@ export class SeedConfig {
   VERSION_NODE = '4.0.0';
 
   /**
-   * The ruleset to be used by `codelyzer` for linting the TypeScript files.
-   */
-  CODELYZER_RULES = customRules();
-
-  /**
    * The flag to enable handling of SCSS files
    * The default value is false. Override with the '--scss' flag.
    * @type {boolean}
@@ -384,7 +395,7 @@ export class SeedConfig {
       join(this.PROJECT_ROOT, 'node_modules', '@angular', '*', 'package.json'),
     ],
     paths: {
-      [join(this.TMP_DIR, 'app', '*')]: `${this.TMP_DIR}/app/*`,
+      [join(this.TMP_DIR, this.BOOTSTRAP_DIR, '*')]: `${this.TMP_DIR}/${this.BOOTSTRAP_DIR}/*`,
       'node_modules/*': 'node_modules/*',
       '*': 'node_modules/*'
     },
@@ -578,15 +589,6 @@ function filterDependency(env: string, d: InjectableDependency): boolean {
 function appVersion(): number | string {
   var pkg = require('../../package.json');
   return pkg.version;
-}
-
-/**
- * Returns the linting configuration to be used for `codelyzer`.
- * @return {string[]} The list of linting rules.
- */
-function customRules(): string[] {
-  var lintConf = require('../../tslint.json');
-  return lintConf.rulesDirectory;
 }
 
 /**
