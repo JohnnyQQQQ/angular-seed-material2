@@ -11,11 +11,12 @@
 **NOTE :** Material2 is as alpha as it gets, there will be hacky workarounds to make things work. This is not in a state where I would build something with it yet.
 
 [![Angular Style Guide](https://mgechev.github.io/angular2-style-guide/images/badge.svg)](https://angular.io/styleguide)
-[![Build Status](https://travis-ci.org/mgechev/angular2-seed.svg?branch=master)](https://travis-ci.org/mgechev/angular2-seed)
+[![Build Status](https://travis-ci.org/mgechev/angular-seed.svg?branch=master)](https://travis-ci.org/mgechev/angular-seed)
+[![Build Status](https://ci.appveyor.com/api/projects/status/jg5vg36w0klpa00e/branch/master?svg=true)](https://ci.appveyor.com/project/mgechev/angular2-seed)
 [![Join the chat at https://gitter.im/mgechev/angular2-seed](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/mgechev/angular2-seed?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 [![MIT license](http://img.shields.io/badge/license-MIT-brightgreen.svg)](http://opensource.org/licenses/MIT)
-[![Dependency Status](https://david-dm.org/mgechev/angular2-seed.svg)](https://david-dm.org/mgechev/angular2-seed)
-[![devDependency Status](https://david-dm.org/mgechev/angular2-seed/dev-status.svg)](https://david-dm.org/mgechev/angular2-seed#info=devDependencies)
+[![Dependency Status](https://david-dm.org/mgechev/angular-seed.svg)](https://david-dm.org/mgechev/angular-seed)
+[![devDependency Status](https://david-dm.org/mgechev/angular-seed/dev-status.svg)](https://david-dm.org/mgechev/angular-seed#info=devDependencies)
 
 Provides fast, reliable and extensible starter for the development of Angular projects.
 
@@ -23,6 +24,7 @@ Provides fast, reliable and extensible starter for the development of Angular pr
 
 - Allows you to painlessly update the seed tasks of your already existing project.
 - Supports multiple Angular applications with shared codebase in a single instance of the seed.
+- Official Angular i18n support.
 - Ready to go, statically typed build system using gulp for working with TypeScript.
 - Production and development builds.
 - **Ahead-of-Time** compilation support.
@@ -80,7 +82,6 @@ _Does not rely on any global dependencies._
 - [Tools documentation](#tools-documentation)
 - [How to extend?](#how-to-extend)
 - [Running tests](#running-tests)
-<!--- [Progressive Web Apps](#progressive-web-apps) -->
 - [Contributing](#contributing)
 - [Advanced Seed Option](#advanced-seed-option)
 - [Examples](#examples)
@@ -163,42 +164,22 @@ npm run e2e.live
 ```
 You can learn more about [Protractor Interactive Mode here](https://github.com/angular/protractor/blob/master/docs/debugging.md#testing-out-protractor-interactively)
 
-<!-- # Progressive Web Apps
-
-`angular-seed` supports progressive web apps with [angular/mobile-toolkit](https://github.com/angular/mobile-toolkit).
-
-The seed can generate a file `manifest.appcache` which lists all files included in a project's output, along with SHA1 hashes of all file contents. This file can be used directly as an AppCache manifest (for now, `index.html` must be manually edited to set this up).
-
-The manifest is also annotated for use with `angular-service-worker`. Some manual operations are currently required to enable this usage. The package must be installed, and `worker.js` manually copied into the project src directory:
-
-```bash
-cp node_modules/angular-service-worker/dist/worker.js src/client
-```
-
-In order to generate the manifest file run:
-
-```bash
-# ENV can be both prod or dev
-npm run generate.manifest -- --env ENV
-```
-
-Then, the commented snippet in `main.ts` must be uncommented to register the worker script as a service worker. -->
-
 # Contributing
 
 Please see the [CONTRIBUTING](https://github.com/mgechev/angular-seed/blob/master/.github/CONTRIBUTING.md) file for guidelines.
 
 # Advanced Seed Option
 
-An [advanced option to this seed exists here](https://github.com/NathanWalker/angular2-seed-advanced) which mirrors the latest changes here but adds core support for:
+An [advanced option to this seed exists here](https://github.com/NathanWalker/angular-seed-advanced) which mirrors the latest changes here but adds core support for:
 
 - [ngrx/store](https://github.com/ngrx/store) RxJS powered state management, inspired by **Redux**
+- [ngrx/effects](https://github.com/ngrx/effects) Side effect model for @ngrx/store
 - [ng2-translate](https://github.com/ocombe/ng2-translate) for i18n
   - Usage is optional but on by default
   - Up to you and your team how you want to utilize it. It can be easily removed if not needed.
 - [angulartics2](https://github.com/angulartics/angulartics2) Vendor-agnostic analytics for Angular applications.
   - Out of box support for [Segment](https://segment.com/)
-    - When using the seed, be sure to change your `write_key` [here](https://github.com/NathanWalker/angular2-seed-advanced/blob/master/src/client/index.html#L24)
+    - When using the seed, be sure to change your `write_key` [here](https://github.com/NathanWalker/angular-seed-advanced/blob/master/src/client/index.html#L24)
   - Can be changed to any vendor, [learn more here](https://github.com/angulartics/angulartics2#supported-providers)
 - [lodash](https://lodash.com/) Helps reduce blocks of code down to single lines and enhances readability
 - [NativeScript](https://www.nativescript.org/) cross platform mobile (w/ native UI) apps. [Setup instructions here](#nativescript-app).
@@ -302,6 +283,7 @@ Forks of this project demonstrate how to extend and integrate with other librari
 │   │   ├── project.config.ts  <- configuration of the specific project
 │   │   ├── seed.config.interfaces.ts
 │   │   └── seed.config.ts     <- generic configuration of the seed project
+│   │   └── seed.tslint.json   <- generic tslint configuration of the seed project
 │   ├── config.ts              <- exported configuration (merge both seed.config and project.config, project.config overrides seed.config)
 │   ├── debug.ts
 │   ├── env                    <- environment configuration
