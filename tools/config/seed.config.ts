@@ -2,7 +2,7 @@ import { join } from 'path';
 import * as slash from 'slash';
 import { argv } from 'yargs';
 
-import { Environments, InjectableDependency } from './seed.config.interfaces';
+import { Environments, ExtendPackages, InjectableDependency } from './seed.config.interfaces';
 
 /************************* DO NOT CHANGE ************************
  *
@@ -341,11 +341,6 @@ export class SeedConfig {
    */
   SYSTEM_CONFIG_DEV: any = {
     defaultJSExtensions: true,
-    packageConfigPaths: [
-      `/node_modules/*/package.json`,
-      `/node_modules/**/package.json`,
-      `/node_modules/@angular/*/package.json`,
-    ],
     paths: {
       [this.BOOTSTRAP_MODULE]: `${this.APP_BASE}${this.BOOTSTRAP_MODULE}`,
       '@angular/common': 'node_modules/@angular/common/bundles/common.umd.js',
@@ -395,8 +390,12 @@ export class SeedConfig {
       join(this.PROJECT_ROOT, 'node_modules', '@angular', '*', 'package.json'),
     ],
     paths: {
+      // Note that for multiple apps this configuration need to be updated
+      // You will have to include entries for each individual application in
+      // `src/client`.
       [join(this.TMP_DIR, this.BOOTSTRAP_DIR, '*')]: `${this.TMP_DIR}/${this.BOOTSTRAP_DIR}/*`,
       'node_modules/*': 'node_modules/*',
+      'dist/tmp/node_modules/*': 'dist/tmp/node_modules/*',
       '*': 'node_modules/*'
     },
     packages: {
@@ -437,8 +436,8 @@ export class SeedConfig {
         defaultExtension: 'js'
       },
       '@angular/material': {
-        format: 'cjs',
-        main: 'material.umd.js',
+        main: 'index.js',
+        defaultExtension: 'js'
       },
       'rxjs': {
         defaultExtension: 'js'
@@ -551,6 +550,17 @@ export class SeedConfig {
 
   getInjectableStyleExtension() {
     return this.ENV === ENVIRONMENTS.PRODUCTION && this.ENABLE_SCSS ? 'scss' : 'css';
+  }
+
+  addPackageBundles(pack: ExtendPackages) {
+
+    if (pack.path) {
+      this.SYSTEM_CONFIG_DEV.paths[pack.name] = pack.path;
+    }
+
+    if (pack.packageMeta) {
+      this.SYSTEM_BUILDER_CONFIG.packages[pack.name] = pack.packageMeta;
+    }
   }
 
 }
