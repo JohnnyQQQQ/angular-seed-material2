@@ -395,6 +395,7 @@ export class SeedConfig {
       // `src/client`.
       [join(this.TMP_DIR, this.BOOTSTRAP_DIR, '*')]: `${this.TMP_DIR}/${this.BOOTSTRAP_DIR}/*`,
       'node_modules/*': 'node_modules/*',
+      'dist/tmp/node_modules/*': 'dist/tmp/node_modules/*',
       '*': 'node_modules/*'
     },
     packages: {
@@ -435,8 +436,8 @@ export class SeedConfig {
         defaultExtension: 'js'
       },
       '@angular/material': {
-        format: 'cjs',
-        main: 'material.umd.js',
+        main: 'index.js',
+        defaultExtension: 'js'
       },
       'rxjs': {
         defaultExtension: 'js'
