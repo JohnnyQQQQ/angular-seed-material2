@@ -13,7 +13,7 @@ import { NameListService } from './name-list/index';
  */
 
 @NgModule({
-  imports: [CommonModule, RouterModule, MaterialModule.forRoot()],
+  imports: [CommonModule, RouterModule, MaterialModule],
   exports: [ToolbarModule, NavbarModule, MaterialModule,
     CommonModule, FormsModule, RouterModule]
 })

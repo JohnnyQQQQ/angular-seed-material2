@@ -20,6 +20,13 @@ export class ProjectConfig extends SeedConfig {
     // Add `NPM` third-party libraries to be injected/bundled.
     this.NPM_DEPENDENCIES = [
       ...this.NPM_DEPENDENCIES,
+
+      /* Select a pre-built Material theme */
+      {src: '@angular/material/core/theming/prebuilt/indigo-pink.css', inject: true},
+
+      /* HammerJS is required if the app uses certain Material components (eg: md-slider and md-slide-toggle) */
+      //{src: 'hammerjs/hammer.min.js', inject: 'libs'},
+
       // {src: 'jquery/dist/jquery.min.js', inject: 'libs'},
       // {src: 'lodash/lodash.min.js', inject: 'libs'},
     ];
@@ -33,6 +40,20 @@ export class ProjectConfig extends SeedConfig {
 
     /* Add to or override NPM module configurations: */
     // this.mergeObject(this.PLUGIN_CONFIGS['browser-sync'], { ghostMode: false });
+
+    // add Material configuration to SystemJS.
+    this.addPackageBundles({
+      name:'@angular/material',
+      path:'node_modules/@angular/material/material.umd.js',
+      packageMeta:{
+        main: 'index.js',
+        defaultExtension: 'js'
+      }
+    });
+
+    //packageConfigPaths cause app to break in some environments
+    delete this.SYSTEM_CONFIG_DEV.packageConfigPaths;
+
   }
 
 }
