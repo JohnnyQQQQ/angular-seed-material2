@@ -83,9 +83,9 @@ export class SeedConfig {
   COVERAGE_PORT = argv['coverage-port'] || 4004;
 
   /**
-   * The path to the coverage output
-   * NB: this must match what is configured in ./karma.conf.js
-   */
+  * The path to the coverage output
+  * NB: this must match what is configured in ./karma.conf.js
+  */
   COVERAGE_DIR = 'coverage';
 
   /**
@@ -332,7 +332,7 @@ export class SeedConfig {
    */
   get DEPENDENCIES(): InjectableDependency[] {
     return normalizeDependencies(this.NPM_DEPENDENCIES.filter(filterDependency.bind(null, this.ENV)))
-        .concat(this.APP_ASSETS.filter(filterDependency.bind(null, this.ENV)));
+      .concat(this.APP_ASSETS.filter(filterDependency.bind(null, this.ENV)));
   }
 
   /**
@@ -351,15 +351,16 @@ export class SeedConfig {
       '@angular/platform-browser': 'node_modules/@angular/platform-browser/bundles/platform-browser.umd.js',
       '@angular/platform-browser-dynamic': 'node_modules/@angular/platform-browser-dynamic/bundles/platform-browser-dynamic.umd.js',
       '@angular/router': 'node_modules/@angular/router/bundles/router.umd.js',
+      '@angular/material': 'node_modules/@angular/material/material.umd.js',
 
       '@angular/common/testing': 'node_modules/@angular/common/bundles/common-testing.umd.js',
       '@angular/compiler/testing': 'node_modules/@angular/compiler/bundles/compiler-testing.umd.js',
       '@angular/core/testing': 'node_modules/@angular/core/bundles/core-testing.umd.js',
       '@angular/http/testing': 'node_modules/@angular/http/bundles/http-testing.umd.js',
       '@angular/platform-browser/testing':
-          'node_modules/@angular/platform-browser/bundles/platform-browser-testing.umd.js',
+        'node_modules/@angular/platform-browser/bundles/platform-browser-testing.umd.js',
       '@angular/platform-browser-dynamic/testing':
-          'node_modules/@angular/platform-browser-dynamic/bundles/platform-browser-dynamic-testing.umd.js',
+        'node_modules/@angular/platform-browser-dynamic/bundles/platform-browser-dynamic-testing.umd.js',
       '@angular/router/testing': 'node_modules/@angular/router/bundles/router-testing.umd.js',
 
       'app/*': '/app/*',
@@ -384,10 +385,9 @@ export class SeedConfig {
    */
   SYSTEM_BUILDER_CONFIG: any = {
     defaultJSExtensions: true,
-    base: this.PROJECT_ROOT,
     packageConfigPaths: [
-      join('node_modules', '*', 'package.json'),
-      join('node_modules', '@angular', '*', 'package.json')
+      join(this.PROJECT_ROOT, 'node_modules', '*', 'package.json'),
+      join(this.PROJECT_ROOT, 'node_modules', '@angular', '*', 'package.json'),
     ],
     paths: {
       // Note that for multiple apps this configuration need to be updated
@@ -395,6 +395,7 @@ export class SeedConfig {
       // `src/client`.
       [join(this.TMP_DIR, this.BOOTSTRAP_DIR, '*')]: `${this.TMP_DIR}/${this.BOOTSTRAP_DIR}/*`,
       'node_modules/*': 'node_modules/*',
+      'dist/tmp/node_modules/*': 'dist/tmp/node_modules/*',
       '*': 'node_modules/*'
     },
     packages: {
@@ -434,8 +435,14 @@ export class SeedConfig {
         main: 'index.js',
         defaultExtension: 'js'
       },
+      '@angular/material': {
+        main: 'index.js',
+        defaultExtension: 'js'
+      },
       'rxjs': {
-        main: 'Rx.js',
+        defaultExtension: 'js'
+      },
+      '.': {
         defaultExtension: 'js'
       }
     }
@@ -564,8 +571,8 @@ export class SeedConfig {
  */
 export function normalizeDependencies(deps: InjectableDependency[]) {
   deps
-      .filter((d: InjectableDependency) => !/\*/.test(d.src)) // Skip globs
-      .forEach((d: InjectableDependency) => d.src = require.resolve(d.src));
+    .filter((d: InjectableDependency) => !/\*/.test(d.src)) // Skip globs
+    .forEach((d: InjectableDependency) => d.src = require.resolve(d.src));
   return deps;
 }
 
