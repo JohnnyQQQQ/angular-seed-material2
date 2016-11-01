@@ -92,23 +92,8 @@ export class SeedConfig {
   * The path to the coverage output
   * NB: this must match what is configured in ./karma.conf.js
   */
-  COVERAGE_DIR = 'coverage';
-
-  /**
-   * Karma reporter configuration
-   */
-  KARMA_REPORTERS: any = {
-    preprocessors: {
-      'dist/**/!(*spec).js': ['coverage']
-    },
-    reporters: ['mocha', 'coverage'],
-    coverageReporter: {
-      dir: this.COVERAGE_DIR + '/',
-      reporters: [
-        {type: 'json', subdir: '.', file: 'coverage-final.json'}
-      ]
-    }
-  };
+  COVERAGE_DIR = 'coverage_js';
+  COVERAGE_TS_DIR = 'coverage';
 
   /**
    * The path for the base of the application at runtime.
@@ -201,6 +186,12 @@ export class SeedConfig {
    * @type {string}
    */
   CSS_SRC = `${this.APP_SRC}/css`;
+
+  /**
+   * The folder of the applications scss files.
+   * @type {string}
+   */
+  SCSS_SRC = `${this.APP_SRC}/scss`;
 
   /**
    * The directory of the applications tools
@@ -310,6 +301,7 @@ export class SeedConfig {
   NPM_DEPENDENCIES: InjectableDependency[] = [
     { src: 'zone.js/dist/zone.js', inject: 'libs' },
     { src: 'core-js/client/shim.min.js', inject: 'shims' },
+    { src: 'intl/dist/Intl.min.js', inject: 'shims' },
     { src: 'systemjs/dist/system.src.js', inject: 'shims', buildType: BUILD_TYPES.DEVELOPMENT },
     // Temporary fix. See https://github.com/angular/angular/issues/9359
     { src: '.tmp/Rx.min.js', inject: 'libs', buildType: BUILD_TYPES.DEVELOPMENT },
@@ -524,6 +516,30 @@ export class SeedConfig {
         rebaseUrls: false
       }
     }
+  };
+
+  /**
+   * Karma reporter configuration
+   */
+  getKarmaReporters(): any {
+    return {
+      preprocessors: {
+        'dist/**/!(*spec|index|*.module|*.routes).js': ['coverage']
+      },
+      reporters: ['mocha', 'coverage', 'karma-remap-istanbul'],
+      coverageReporter: {
+        dir: this.COVERAGE_DIR + '/',
+        reporters: [
+          { type: 'json', subdir: '.', file: 'coverage-final.json' },
+          { type: 'html', subdir: '.' }
+        ]
+      },
+      remapIstanbulReporter: {
+        reports: {
+          html: this.COVERAGE_TS_DIR
+        }
+      }
+    };
   };
 
   /**
