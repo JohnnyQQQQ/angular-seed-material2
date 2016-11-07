@@ -1,9 +1,9 @@
 {
-  "name": "angular2-seed-material2",
+  "name": "angular-seed-material2",
   "version": "0.0.0",
   "description": "Modular starter project for Angular 2 (and beyond) with statically typed build and AoT compilation",
   "repository": {
-    "url": "https://github.com/DeviantJS/angular2-seed-material2"
+    "url": "https://github.com/JohnnyQQQQ/angular-seed-material2"
   },
   "scripts": {
     "build.dev": "gulp build.dev --color --env-config dev --config-env dev",
@@ -40,7 +40,7 @@
   "author": "Minko Gechev <mgechev>",
   "contributors": [
     {
-      "name": "Joshua Wiens <d3viant0ne>"
+      "name": "Jean-Philippe Quéméner <JohnnyQQQQ>"
     }
   ],
   "license": "MIT",
