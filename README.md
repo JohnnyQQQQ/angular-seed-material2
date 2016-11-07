@@ -1,9 +1,12 @@
-# Angular-Seed Materialized [![Build Status](https://travis-ci.org/DeviantJS/angular2-seed-material2.svg?branch=master)](https://travis-ci.org/DeviantJS/angular2-seed-material2)
+# Angular-Seed Materialized 
+
+[![Build Status](https://travis-ci.org/JohnnyQQQQ/angular-seed-material2.svg?branch=master)](https://travis-ci.org/JohnnyQQQQ/angular-seed-material2)
+[![Build status](https://ci.appveyor.com/api/projects/status/7y363y7i9verbk7s?svg=true)](https://ci.appveyor.com/project/JohnnyQQQQ/angular-seed-material2)
 
 
 ## Deviations from the based seed project
 - angular/material2 
-> Current Material Version - 2.0.0-alpha.9-3
+> Current material version - 2.0.0-alpha.9-3
 
 ## This repo is intended to guide you through the addition of material2 on top of your angular-seed fork
 - Please don't make project forks of this repo unless it's for contribution ( build ontop of the official seed )
