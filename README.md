@@ -65,6 +65,11 @@ $ npm start
 # api document for the app
 # npm run build.docs
 
+#generate api documentation
+$ npm run compodoc
+$ npm serve.compodoc
+
+
 # to start deving with livereload site and coverage as well as continuous testing
 $ npm run start.deving
 
@@ -328,7 +333,6 @@ Forks of this project demonstrate how to extend and integrate with other librari
 │   │   ├── project            <- manual ambient typings for the project
 │   │   │   └── sample.package.d.ts
 │   │   └── seed               <- seed manual ambient typings
-│   │       ├── angular2-hot-loader.d.ts
 │   │       ├── autoprefixer.d.ts
 │   │       ├── cssnano.d.ts
 │   │       ├── express-history-api-fallback.d.ts
