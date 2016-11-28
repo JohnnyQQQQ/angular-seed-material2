@@ -1,7 +1,7 @@
 # Angular-Seed Materialized 
 
 [![Build Status](https://travis-ci.org/JohnnyQQQQ/angular-seed-material2.svg?branch=master)](https://travis-ci.org/JohnnyQQQQ/angular-seed-material2)
-[![Build status](https://ci.appveyor.com/api/projects/status/7y363y7i9verbk7s?svg=true)](https://ci.appveyor.com/project/JohnnyQQQQ/angular-seed-material2)
+[![Build status](https://ci.appveyor.com/api/projects/status/mtl3a4qjdsi4xlbm?svg=true)](https://ci.appveyor.com/project/JohnnyQQQQ/angular-seed-material2)
 
 
 ## Deviations from the based seed project
