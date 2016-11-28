@@ -1,11 +1,11 @@
 describe('Home', () => {
 
-  beforeEach(() => {
-    browser.get('/');
+  beforeEach(async () => {
+    return await browser.get('/');
   });
 
   it('should have an input', () => {
-    expect(element(by.css('sd-home .home-form .home-input')).isPresent()).toEqual(true);
+    expect(element(by.css('sd-home form input')).isPresent()).toEqual(true);
   });
 
   it('should have a list of computer scientists', () => {
