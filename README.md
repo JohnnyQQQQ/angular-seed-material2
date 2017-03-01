@@ -7,7 +7,7 @@
 ## Deviations from the based seed project
 - angular/material2 
 
-> current material version - 2.0.0-alpha.11-3
+> current material version - 2.0.0-beta.2
 
 ## This repo is intended to guide you through the addition of material2 on top of your angular-seed fork
 - Please don't make project forks of this repo unless it's for contribution ( build ontop of the official seed )

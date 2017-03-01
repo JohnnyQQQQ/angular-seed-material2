@@ -16,7 +16,7 @@ export function main() {
     beforeEach(() => {
 
       TestBed.configureTestingModule({
-        imports: [FormsModule, MaterialModule.forRoot()],
+        imports: [FormsModule, MaterialModule],
         declarations: [HomeComponent],
         providers: [
           { provide: NameListService, useValue: new MockNameListService() }

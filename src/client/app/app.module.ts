@@ -12,7 +12,7 @@ import { SharedModule } from './shared/shared.module';
 
 
 @NgModule({
-  imports: [BrowserModule, HttpModule, AppRoutingModule, MaterialModule.forRoot(), AboutModule, HomeModule,
+  imports: [BrowserModule, HttpModule, AppRoutingModule, MaterialModule, AboutModule, HomeModule,
     SharedModule.forRoot()],
   declarations: [AppComponent],
   providers: [{

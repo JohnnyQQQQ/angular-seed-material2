@@ -146,7 +146,7 @@
     "@angular/platform-browser": "~2.4.0",
     "@angular/platform-browser-dynamic": "~2.4.0",
     "@angular/router": "~3.4.1",
-    "@angular/material": "2.0.0-alpha.11-3",
+    "@angular/material": "2.0.0-beta.2",
     "@types/hammerjs": "^2.0.31",
     "core-js": "^2.4.1",
     "intl": "^1.2.5",
