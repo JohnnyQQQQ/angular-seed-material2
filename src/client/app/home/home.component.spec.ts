@@ -7,7 +7,7 @@ import {
 import { Observable } from 'rxjs/Observable';
 
 import { HomeComponent } from './home.component';
-import { NameListService } from '../shared/index';
+import { NameListService } from '../shared/name-list/name-list.service';
 import { MaterialModule } from '@angular/material';
 
 export function main() {
