@@ -29,10 +29,5 @@
       "hammerjs"
     ]
   },
-  "exclude": [
-    "node_modules",
-    "dist",
-    "src"
-  ],
   "compileOnSave": false
 }
