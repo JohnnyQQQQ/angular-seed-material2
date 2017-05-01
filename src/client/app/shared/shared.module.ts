@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { MaterialModule } from '@angular/material';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { ToolbarComponent } from './toolbar/toolbar.component';
 import { NavbarComponent } from './navbar/navbar.component';
@@ -15,7 +16,7 @@ import { NameListService } from './name-list/name-list.service';
 @NgModule({
   imports: [CommonModule, RouterModule, MaterialModule],
   declarations: [ToolbarComponent, NavbarComponent],
-  exports: [ToolbarComponent, NavbarComponent, MaterialModule,
+  exports: [ToolbarComponent, NavbarComponent, MaterialModule, BrowserAnimationsModule,
     CommonModule, FormsModule, RouterModule]
 })
 export class SharedModule {

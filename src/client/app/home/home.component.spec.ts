@@ -9,6 +9,7 @@ import { Observable } from 'rxjs/Observable';
 import { HomeComponent } from './home.component';
 import { NameListService } from '../shared/name-list/name-list.service';
 import { MaterialModule } from '@angular/material';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 export function main() {
   describe('Home component', () => {
@@ -16,7 +17,7 @@ export function main() {
     beforeEach(() => {
 
       TestBed.configureTestingModule({
-        imports: [FormsModule, MaterialModule],
+        imports: [FormsModule, MaterialModule, BrowserAnimationsModule],
         declarations: [HomeComponent],
         providers: [
           { provide: NameListService, useValue: new MockNameListService() }

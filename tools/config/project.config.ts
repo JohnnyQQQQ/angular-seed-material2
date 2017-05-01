@@ -24,7 +24,7 @@ export class ProjectConfig extends SeedConfig {
       ...this.NPM_DEPENDENCIES,
 
       /* Select a pre-built Material theme */
-      {src: '@angular/material/core/theming/prebuilt/indigo-pink.css', inject: true},
+      {src: '@angular/material/prebuilt-themes/indigo-pink.css', inject: true},
 
       /* HammerJS is required if the app uses certain Material components (eg: md-slider and md-slide-toggle) */
       //{src: 'hammerjs/hammer.min.js', inject: 'libs'},
