@@ -69,11 +69,7 @@ export class ProjectConfig extends SeedConfig {
     // add Material configuration to SystemJS.
     this.addPackageBundles({
       name:'@angular/material',
-      path:'node_modules/@angular/material/bundles/material.umd.js',
-      packageMeta:{
-        main: 'index.js',
-        defaultExtension: 'js'
-      }
+      path:'node_modules/@angular/material/bundles/material.umd.js'
     });
   }
 
