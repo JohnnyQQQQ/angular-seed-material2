@@ -6,9 +6,9 @@
       </p>
       <form (submit)="addName()" class="home-form">
         <div>
-          <md-input-container>
+          <md-form-field>
             <input mdInput [(ngModel)]="newName" name="newName" class="home-input" placeholder="Awesome Computer Scientist" ngDefaultControl>
-          </md-input-container>
+          </md-form-field>
           <button md-raised-button color="accent" type="submit" class="home-button">ADD</button>
         </div>
       </form>

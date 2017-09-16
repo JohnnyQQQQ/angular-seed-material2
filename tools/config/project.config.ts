@@ -71,10 +71,35 @@ export class ProjectConfig extends SeedConfig {
       name:'@angular/material',
       path:'node_modules/@angular/material/bundles/material.umd.js'
     });
+
+
+    // CDK
     this.addPackageBundles({
       name:'@angular/cdk',
       path:'node_modules/@angular/cdk/bundles/cdk.umd.js'
     });
+
+    const cdkPackages = [
+      'a11y',
+      'bidi',
+      'coercion',
+      'collections',
+      'keycodes',
+      'observers',
+      'overlay',
+      'platform',
+      'portal',
+      'rxjs',
+      'scrolling',
+      'table'
+    ];
+
+    for (let packageName of cdkPackages) {
+      this.addPackageBundles({
+        name:'@angular/cdk/' + packageName,
+        path:'node_modules/@angular/cdk/bundles/cdk-' + packageName + '.umd.js'
+      });
+    }
   }
 
 }
