@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { MaterialModule } from '@angular/material';
 import { NavbarComponent } from './navbar.component';
+import { MaterialModule } from '../material/material.module';
 
 @NgModule({
-    imports: [MaterialModule, RouterModule],
+    imports: [RouterModule, MaterialModule],
     declarations: [NavbarComponent],
     exports: [NavbarComponent],
 })

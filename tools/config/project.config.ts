@@ -72,6 +72,47 @@ export class ProjectConfig extends SeedConfig {
       path:'node_modules/@angular/material/bundles/material.umd.js'
     });
 
+    const materialPackages = [
+      'autocomplete',
+      'button',
+      'button-toggle',
+      'card',
+      'checkbox',
+      'chips',
+      'core',
+      'datepicker',
+      'dialog',
+      'examples',
+      'expansion',
+      'form-field',
+      'grid-list',
+      'icon',
+      'input',
+      'list',
+      'menu',
+      'paginator',
+      'progress-bar',
+      'progress-spinner',
+      'radio',
+      'select',
+      'sidenav',
+      'slide-toggle',
+      'slider',
+      'snack-bar',
+      'sort',
+      'stepper',
+      'table',
+      'tabs',
+      'toolbar',
+      'tooltip'
+    ];
+
+    for (let packageName of materialPackages) {
+      this.addPackageBundles({
+        name:'@angular/cdk/' + packageName,
+        path:'node_modules/@angular/cdk/bundles/material-' + packageName + '.umd.js'
+      });
+    }
 
     // CDK
     this.addPackageBundles({
@@ -91,7 +132,8 @@ export class ProjectConfig extends SeedConfig {
       'portal',
       'rxjs',
       'scrolling',
-      'table'
+      'table',
+      'stepper'
     ];
 
     for (let packageName of cdkPackages) {

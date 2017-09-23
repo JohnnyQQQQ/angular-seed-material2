@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
-import { MaterialModule } from '@angular/material';
 import { ToolbarComponent } from './toolbar.component';
+import { MaterialModule } from '../material/material.module';
 
 @NgModule({
     imports: [MaterialModule],

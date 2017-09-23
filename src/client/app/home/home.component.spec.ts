@@ -8,8 +8,8 @@ import { Observable } from 'rxjs/Observable';
 
 import { HomeComponent } from './home.component';
 import { NameListService } from '../shared/name-list/name-list.service';
-import { MaterialModule } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MaterialModule } from '../shared/material/material.module';
 
 export function main() {
   describe('Home component', () => {
