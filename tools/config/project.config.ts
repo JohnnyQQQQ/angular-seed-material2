@@ -23,9 +23,6 @@ export class ProjectConfig extends SeedConfig {
     this.NPM_DEPENDENCIES = [
       ...this.NPM_DEPENDENCIES,
 
-      /* Select a pre-built Material theme */
-      {src: '@angular/material/prebuilt-themes/indigo-pink.css', inject: true},
-
       /* HammerJS is required if the app uses certain Material components (eg: md-slider and md-slide-toggle) */
       //{src: 'hammerjs/hammer.min.js', inject: 'libs'},
 
@@ -109,8 +106,8 @@ export class ProjectConfig extends SeedConfig {
 
     for (let packageName of materialPackages) {
       this.addPackageBundles({
-        name:'@angular/cdk/' + packageName,
-        path:'node_modules/@angular/cdk/bundles/material-' + packageName + '.umd.js'
+        name:'@angular/material/' + packageName,
+        path:'node_modules/@angular/material/bundles/material-' + packageName + '.umd.js'
       });
     }
 
@@ -142,6 +139,8 @@ export class ProjectConfig extends SeedConfig {
         path:'node_modules/@angular/cdk/bundles/cdk-' + packageName + '.umd.js'
       });
     }
+
+    this.ENABLE_SCSS = true;
   }
 
 }
