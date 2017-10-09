@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
-import { MdButtonModule, MdFormFieldModule, MdIconModule, MdInputModule, MdToolbarModule } from '@angular/material';
+import { MatButtonModule, MatFormFieldModule, MatIconModule, MatInputModule, MatToolbarModule } from '@angular/material';
 
 const MATERIAL_MODULES = [
-  MdToolbarModule,
-  MdIconModule,
-  MdButtonModule,
-  MdInputModule,
-  MdFormFieldModule
+  MatToolbarModule,
+  MatIconModule,
+  MatButtonModule,
+  MatInputModule,
+  MatFormFieldModule
   // add required material modules here
 ];
 

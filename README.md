@@ -5,8 +5,8 @@
 
 
 ## Deviations from the based seed project
-- angular/material2 - 2.0.0-beta.11
-- angular/cdk - 2.0.0-beta.11
+- angular/material2 - 2.0.0-beta.12
+- angular/cdk - 2.0.0-beta.12
 
 ## This repo is intended to guide you through the addition of material2 on top of your angular-seed fork
 - Please don't make project forks of this repo unless it's for contribution ( build ontop of the official seed )
