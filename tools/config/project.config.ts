@@ -79,7 +79,6 @@ export class ProjectConfig extends SeedConfig {
       'core',
       'datepicker',
       'dialog',
-      'examples',
       'expansion',
       'form-field',
       'grid-list',
@@ -119,18 +118,19 @@ export class ProjectConfig extends SeedConfig {
 
     const cdkPackages = [
       'a11y',
+      'accordion',
       'bidi',
       'coercion',
       'collections',
       'keycodes',
+      'layout',
       'observers',
       'overlay',
       'platform',
       'portal',
-      'rxjs',
       'scrolling',
+      'stepper',
       'table',
-      'stepper'
     ];
 
     for (const packageName of cdkPackages) {
