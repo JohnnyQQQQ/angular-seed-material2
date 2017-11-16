@@ -23,7 +23,7 @@ export function main() {
 
   describe('App component', () => {
 
-    let config: Route[] = [
+    const config: Route[] = [
       { path: '', component: HomeComponent },
       { path: 'about', component: AboutComponent }
     ];
@@ -44,8 +44,8 @@ export function main() {
         TestBed
           .compileComponents()
           .then(() => {
-            let fixture = TestBed.createComponent(TestComponent);
-            let compiled = fixture.nativeElement;
+            const fixture = TestBed.createComponent(TestComponent);
+            const compiled = fixture.nativeElement;
 
             expect(compiled).toBeTruthy();
           });

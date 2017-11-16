@@ -19,8 +19,7 @@
     "allowSyntheticDefaultImports": true,
     "typeRoots": [
       "../../node_modules/@types",
-      "../../node_modules"
-    ],
+      "../../node_modules"],
     "types": [
       "node",
       "jasmine",
@@ -30,7 +29,5 @@
     ]
   },
   "compileOnSave": false,
-  "exclude": [
-    "app/main-prod.ts"
-  ]
+  "exclude": ["app/main-prod.ts"]
 }
