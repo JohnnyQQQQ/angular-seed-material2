@@ -65,8 +65,8 @@ export class ProjectConfig extends SeedConfig {
 
     // add Material configuration to SystemJS.
     this.addPackageBundles({
-      name:'@angular/material',
-      path:'node_modules/@angular/material/bundles/material.umd.js'
+      name: '@angular/material',
+      path: 'node_modules/@angular/material/bundles/material.umd.js'
     });
 
     const materialPackages = [
@@ -104,17 +104,17 @@ export class ProjectConfig extends SeedConfig {
       'tooltip'
     ];
 
-    for (let packageName of materialPackages) {
+    for (const packageName of materialPackages) {
       this.addPackageBundles({
-        name:'@angular/material/' + packageName,
-        path:'node_modules/@angular/material/bundles/material-' + packageName + '.umd.js'
+        name: '@angular/material/' + packageName,
+        path: 'node_modules/@angular/material/bundles/material-' + packageName + '.umd.js'
       });
     }
 
     // CDK
     this.addPackageBundles({
-      name:'@angular/cdk',
-      path:'node_modules/@angular/cdk/bundles/cdk.umd.js'
+      name: '@angular/cdk',
+      path: 'node_modules/@angular/cdk/bundles/cdk.umd.js'
     });
 
     const cdkPackages = [
@@ -133,10 +133,10 @@ export class ProjectConfig extends SeedConfig {
       'stepper'
     ];
 
-    for (let packageName of cdkPackages) {
+    for (const packageName of cdkPackages) {
       this.addPackageBundles({
-        name:'@angular/cdk/' + packageName,
-        path:'node_modules/@angular/cdk/bundles/cdk-' + packageName + '.umd.js'
+        name: '@angular/cdk/' + packageName,
+        path: 'node_modules/@angular/cdk/bundles/cdk-' + packageName + '.umd.js'
       });
     }
 
