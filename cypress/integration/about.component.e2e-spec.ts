@@ -5,7 +5,7 @@ describe('About', () => {
   });
 
   it('should have correct feature heading', () => {
-    cy.get('sd-about h2').should('have.text', 'Features');
+    cy.get('mat-card h2').should('have.text', 'Features');
   });
 
 });

@@ -13,11 +13,11 @@ describe('App', () => {
   });
 
   it('should have correct nav text for Home', () => {
-    cy.get('sd-app sd-navbar nav a:first-child').should('have.text', 'HOME');
+    cy.get('sd-app sd-navbar nav a:first-child button').should('have.text', 'HOME');
   });
 
   it('should have correct nav text for About', () => {
-    cy.get('sd-app sd-navbar nav a:nth-child(2)').should('have.text', 'ABOUT');
+    cy.get('sd-app sd-navbar nav a:nth-child(2) button').should('have.text', 'ABOUT');
   });
 
 });
