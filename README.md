@@ -5,8 +5,8 @@
 
 
 ## Deviations from the based seed project
-- angular/material2 - 5.0.1
-- angular/cdk - 5.0.1
+- angular/material2 - 6.3.3
+- angular/cdk - 6.3.3
 
 ## This repo is intended to guide you through the addition of material2 on top of your angular-seed fork
 - Please don't make project forks of this repo unless it's for contribution ( build ontop of the official seed )
@@ -16,7 +16,7 @@
 
 [![Greenkeeper badge](https://badges.greenkeeper.io/mgechev/angular-seed.svg)](https://greenkeeper.io/)
 
-[![Angular Style Guide](https://mgechev.github.io/angular2-style-guide/images/badge.svg)](https://angular.io/styleguide)
+[![Angular Style Guide](https://mgechev.github.io/angular2-style-guide/images/badge.svg)](https://angular.io/guide/styleguide)
 [![Build Status](https://travis-ci.org/mgechev/angular-seed.svg?branch=master)](https://travis-ci.org/mgechev/angular-seed)
 [![Build Status](https://ci.appveyor.com/api/projects/status/jg5vg36w0klpa00e/branch/master?svg=true)](https://ci.appveyor.com/project/mgechev/angular2-seed)
 [![Join the chat at https://gitter.im/mgechev/angular2-seed](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/mgechev/angular2-seed?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
@@ -38,9 +38,9 @@ Provides fast, reliable and extensible starter for the development of Angular pr
 - **Tree-Shaking** production builds with Rollup.
 - Uses codelyzer for static code analysis, which verifies that the project follows practices from the Angular style guide.
 - Sample unit tests with Jasmine and Karma including code coverage via [istanbul](https://gotwarlost.github.io/istanbul/).
-- End-to-end tests with Protractor.
+- End-to-end tests with Cypress.
 - Development server with Livereload.
-- Following the [best practices](https://angular.io/styleguide).
+- Following the [best practices](https://angular.io/guide/styleguide).
 - Provides full Docker support for both development and production environment
 - Support for Angular Mobile Toolkit
 - Allows you to analyze the space usage of created bundles by using source-map-explorer
@@ -79,6 +79,8 @@ $ npm run build.dev
 # prod build, will output the production application in `dist/prod`
 # the produced code can be deployed (rsynced) to a remote server
 $ npm run build.prod
+# prod build using different base path
+$ npm run build.prod -- --base "/foo/bar/"
 
 # dev build of multiple applications (by default the value of --app is "app")
 $ npm start -- --app baz
@@ -114,7 +116,7 @@ $ npm run build.prod.rollup.aot
 Your project will be compiled ahead of time (AOT), and then the resulting bundle will be tree-shaken and minified. During the tree-shaking process Rollup statically analyses your code, and your dependencies, and includes the bare minimum in your bundle.
 
 **Notes**
-- Beware of non-static/side-effectful imports. These cannot be properly optimized. For this reason, even though tree-shaking is taking place the developer still needs to be careful not to include non-static imports that are unnecessary, as those referenced imports will always end up in final bundle. Special attention should be given to RxJs, which makes heavy use of non-static/side-effectful imports: make sure you only add the operators you use, as any added operators will be included in your final production bundle.
+- Beware of non-static/side-effectful imports. These cannot be properly optimized. For this reason, even though tree-shaking is taking place the developer still needs to be careful not to include non-static imports that are unnecessary, as those referenced imports will always end up in final bundle. Special attention should be given to RxJs, which makes heavy use of non-static/side-effectful imports: make sure you only [pipeable operators](https://github.com/ReactiveX/rxjs/blob/master/doc/pipeable-operators.md).
 - UMD modules result in code that cannot be properly optimized. For best results, prefer ES6 modules whenever possible. This includes third-party dependencies: if one is published in both UMD and ES6 modules, go with the ES6 modules version.
 - During a production build, CommonJs modules will be automatically converted to ES6 modules. This means you can use them and/or require dependencies that use them without any issues.
 
@@ -142,6 +144,12 @@ The application provides full Docker support. You can use it for both developmen
 
 Please note that prod and dev are built into their own separate image, which can lead to unexpected differences in the
 npm dependencies and the state of the sources in the container, if you are not familiar with Docker. See below.
+
+Please also note that karma tests (`npm test`) are independent from the docker environment.
+Even if an angular-seed container is up and running, karma will run in the context of your **local** npm install,
+which may differ from that of the container. In fact, the docker containers don't have karma installed at all.
+
+Cypress tests are however fully supported and recommended to test the app served by either the dev or prod docker containers.  
 
 ## Development build and deployment
 
@@ -393,7 +401,6 @@ Forks of this project demonstrate how to extend and integrate with other librari
 │   │   │   ├── i18n.providers.ts
 │   │   │   ├── main-prod.ts
 │   │   │   ├── main.ts
-│   │   │   ├── operators.ts
 │   │   │   └── shared
 │   │   │       ├── config
 │   │   │       │   └── env.config.ts
@@ -453,7 +460,6 @@ Forks of this project demonstrate how to extend and integrate with other librari
 │   │       ├── karma.d.ts
 │   │       ├── merge-stream.d.ts
 │   │       ├── open.d.ts
-│   │       ├── operators.d.ts
 │   │       ├── slash.d.ts
 │   │       ├── systemjs-builder.d.ts
 │   │       └── tildify.d.ts
@@ -465,7 +471,6 @@ Forks of this project demonstrate how to extend and integrate with other librari
 │   │   └── seed               <- seed generic gulp tasks. They can be overriden by the project specific gulp tasks
 │   │   │   ├── build.assets.dev.ts
 │   │   │   ├── build.assets.prod.ts
-│   │   │   ├── build.bundle.rxjs.ts
 │   │   │   ├── build.bundles.app.aot.ts
 │   │   │   ├── build.bundles.app.rollup.aot.ts
 │   │   │   ├── build.bundles.app.ts
